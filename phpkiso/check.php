@@ -35,9 +35,9 @@
 </head>
 <body>
   <h1>入力内容確認</h1>
-  <p><?php echo $nickname_result; ?></p>
-  <p><?php echo $email_result; ?></p>
-  <p><?php echo $content_result; ?></p>
+  <p><?php echo htmlspecialchars($nickname_result); ?></p>
+  <p><?php echo htmlspecialchars($email_result); ?></p>
+  <p><?php echo htmlspecialchars($content_result); ?></p>
 <form method="post" action="thanks.php">
   <input type="hidden" name="nickname" value="<?php echo $nickname; ?>">
   <input type="hidden" name="email" value="<?php echo $email; ?>">
