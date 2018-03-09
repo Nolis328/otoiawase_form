@@ -1,53 +1,32 @@
 <?php
-echo $_POST['nickname'];
-echo $_POST['email'];
-echo $_POST['content'];
+  $nickname = $_POST['nickname'];
+  $email = $_POST['email'];
+  $content = $_POST['content'];
 
-
-//空送信対策
-$nickname = $_POST['nickname'];
-$email = $_POST['email'];
-$content = $_POST['content'];
-	//empty_nickname
-
-if ($nickname == '') {
-	echo 'ニックネームが入力されていません。';
-} else {
-	echo 'ようこそ、' . $nickname .'様';
-}
-    //empty-mail
-if ($email == '') {
-	echo 'メールアドレスが入力されていません。';
-} else {
-	echo 'メールアドレス：' . $email;
-}
- 	//empty_content
-if ($content == '') {
-	echo 'お問い合わせ内容が入力されていません。';
-} else {
-	echo 'お問い合わせ内容：' . $content;
-}
+  // ニックネーム
+  if ($nickname == '') {
+    $nickname_result = 'ニックネームが入力されていません。';
+  } else {
+    $nickname_result = 'ようこそ' . $nickname .'様';
+  }
+  // メールアドレス
+  if ($email == '') {
+    $email_result = 'メールアドレスが入力されていません。';
+  } else {
+    $email_result = 'メールアドレス：' . $email;
+  }
+  // お問い合わせ内容
+  if ($content == '') {
+    $content_result = 'お問い合わせ内容が入力されていません。';
+  } else {
+    $content_result = 'お問い合わせ内容：' . $content;
+  }
 
 
   if ($nickname != '' && $email != '' && $content != '') {
     // OKボタンを表示
   }
-
-
-
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -56,18 +35,19 @@ if ($content == '') {
 </head>
 <body>
   <h1>入力内容確認</h1>
+  <p><?php echo $nickname_result; ?></p>
+  <p><?php echo $email_result; ?></p>
+  <p><?php echo $content_result; ?></p>
+<form method="post" action="thanks.php">
+  <input type="hidden" name="nickname" value="<?php echo $nickname; ?>">
+  <input type="hidden" name="email" value="<?php echo $email; ?>">
+  <input type="hidden" name="content" value="<?php echo $content; ?>">
 
-<!-- 戻るボタン -->
-<form method="POST" action="thanks.php">
-  <input type="button" value="戻る" onclick="history.back()">
-  <input type="submit" value="OK">
+  <input type="button" onclick="history.back()" value="戻る">
+  <?php if ($nickname != '' && $email != '' && $content != ''): ?>
+    <input type="submit" value="OK">
+  <?php endif; ?>
 </form>
-
-
- <?php if ($nickname != '' && $email != '' && $content != ''): ?>
-  <input type="submit" value="OK">
-<?php endif; ?>
-
 
 
 </body>
