@@ -20,7 +20,7 @@
 
 
   // ２．SQL文を実行する
-  $sql = "INSERT INTO `survey` ( `nickname`, `email`, `content`) VALUES ( ?, ?, ?);";
+  $sql = "INSERT INTO `survey` ( `nickname`, `email`, `content`, `created`) VALUES ( ?, ?, ?, now());";//nowはmysqlの機能
     //紫色になっているとエラー 全体をダブルクォートで囲えば解決。変数をぶち込む
     //SQLインジェクション（不正操作）を防ぐ
 

@@ -8,7 +8,7 @@ $dbh = new PDO($dsn, $user, $password);
 $dbh->query('SET NAMES utf8');
 
 // ２．SQL文を実行する
-$sql = 'SELECT * FROM `survey` ORDER BY `created` DESC';//これだけで取れる
+$sql= "DELETE FROM `survey` WHERE `survey`.`id` = 11";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
@@ -31,39 +31,3 @@ $dbh = null;
 	//arrayをする意味は配列に一度保存してから切断し、あとから取り出すことができ、美しく効率的。
 	//資料のものよりデータ処理の手数が短く切ることができるということ。
 ?>
-
-
-<?php
-// var_dump($survey_line);
-foreach($survey_line as $one_otoiawase){
-?>
-<?php echo $one_otoiawase["id"] ?><br>
-<?php echo $one_otoiawase["nickname"] ?><br>
-<?php echo $one_otoiawase["email"] ?><br>
-<?php echo $one_otoiawase["content"] ?><br>
-<?php echo $one_otoiawase["created"] ?><br>
-	<form action="delete.php" method="post">
-		<input type="submit" value="削除する">
-		<input type="hidden" name="id" value="<?=$row['id']?>">
-	</form>
-
-<hr><!-- 水平線 -->
-<?php
-}?>
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8";>
-	<title></title>
-</head>
-<body>
-
-
-
-
-</body>
-</html>
