@@ -12,6 +12,7 @@
 
   // ２．SQL文を実行する
   $sql = 'SELECT * FROM `survey` WHERE `content` LIKE '."'%".$_POST['word']."%'";
+      //まず関数に代入するシングルクウォート
   // SQLを実行
   $stmt = $dbh->prepare($sql);
   $stmt->execute();
@@ -50,6 +51,7 @@
 
 
 <?php
+if (isset($survey_line)){//配列そのものがないとき（つまり最初のページのときにバグるのを防ぐ）recはその中身。
 foreach($survey_line as $one_otoiawase){
 ?>
 <?php echo $one_otoiawase["id"] ?><br>
@@ -59,7 +61,7 @@ foreach($survey_line as $one_otoiawase){
 <?php echo $one_otoiawase["created"] ?><br>
 
 
- <?php }?>
+ <?php }}?>
 
 </body>
 </html>
